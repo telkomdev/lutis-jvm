@@ -1,0 +1,15 @@
+lutislib/build/
+
+.idea/
+
+lutislib/vendor/image_magick/
+
+*.dylib
+*.so
+*.a
+*.o
+*.dll
+*.lib
+
+*.iml
+
