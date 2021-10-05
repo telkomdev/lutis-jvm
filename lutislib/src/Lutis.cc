@@ -1,21 +1,22 @@
 #include <stdio.h>
 #include <vector>
+#include <string>
 #include <Magick++.h>
 #include "../header/Core.h"
 #include "../header/Type.h"
 #include "../header/com_wuriyanto_lab_lutisjvm_Lutis.h"
 
-jint throwError(JNIEnv *env, char *message)
+jint throwError(JNIEnv *env, const std::string message)
 {
     jclass exClass;
-    char className[] = "java/lang/Exception";
+    std::string className = "java/lang/Exception";
 
-    exClass = (*env).FindClass(className);
+    exClass = (*env).FindClass(className.c_str());
     if (exClass == NULL) {
         return throwError(env, className);
     }
 
-    return (*env).ThrowNew(exClass, message);
+    return (*env).ThrowNew(exClass, message.c_str());
 }
 
 JNIEXPORT jbyteArray JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_rotateImageN
@@ -25,7 +26,8 @@ JNIEXPORT jbyteArray JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_rotateImageN
 
     if (_angle <= 0)
     {
-        throwError(env, "angle should greater than 0");
+        std::string msg = "angle should greater than 0";
+        throwError(env, msg);
     }
 
     Magick::Image image;
@@ -33,7 +35,8 @@ JNIEXPORT jbyteArray JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_rotateImageN
     int decodeRes = lutis::core::DecodeFromBufferToMagickImage(env, data, image);
     if (decodeRes != 0)
     {
-        throwError(env, "error decoding image data");
+        std::string msg = "error decoding image data";
+        throwError(env, msg);
     }
 
     // operations
@@ -42,7 +45,8 @@ JNIEXPORT jbyteArray JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_rotateImageN
         image.rotate(angle);
     } catch(Magick::Error& err)
     {
-       throwError(env, "error rotating image");
+        std::string msg = "error rotating image";
+       throwError(env, msg);
     }
 
     // encode
