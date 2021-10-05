@@ -7,14 +7,16 @@ PWD=`pwd`
 LUTIS_LIB_FOLDER='lutislib'
 
 package:
-	mvn clean package
+	echo 'build maven project' && mvn clean package
 
 gen-lib:
-	javac -h ./lutislib/header $(NATIVE_INTERFACE_CLASS_PATH) \
+	echo 'generate lib header' \
+	&& javac -h ./lutislib/header $(NATIVE_INTERFACE_CLASS_PATH) \
 	&& rm $(NATIVE_CLASS_PATH)
 
 build-lib:
-	cd $(LUTIS_LIB_FOLDER) && rm -rf build \
+	echo 'run cmake' \
+	&& cd $(LUTIS_LIB_FOLDER) && rm -rf build \
 	&& mkdir build \
 	&& cd build \
 	&& cmake .. \
@@ -22,3 +24,5 @@ build-lib:
 	&& ls \
 	&& cd ../.. \
 	&& echo 'build native lib finished..'
+
+all: gen-lib package build-lib
