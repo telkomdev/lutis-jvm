@@ -9,14 +9,6 @@ extern "C" {
 #endif
 /*
  * Class:     com_wuriyanto_lab_lutisjvm_Lutis
- * Method:    powerN
- * Signature: (II)I
- */
-JNIEXPORT jint JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_powerN
-  (JNIEnv *, jobject, jint, jint);
-
-/*
- * Class:     com_wuriyanto_lab_lutisjvm_Lutis
  * Method:    rotateImageN
  * Signature: (D[B)[B
  */

@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <vector>
-#include <cmath>
 #include <Magick++.h>
 #include "../header/Core.h"
 #include "../header/Type.h"
@@ -17,14 +16,6 @@ jint throwError(JNIEnv *env, char *message)
     }
 
     return (*env).ThrowNew(exClass, message);
-}
-
-JNIEXPORT jint JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_powerN
-        (JNIEnv *env, jobject obj, jint a, jint b)
-{
-    int _a = a;
-    int _b = b;
-    return (jint) std::pow(_a, _b);
 }
 
 JNIEXPORT jbyteArray JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_rotateImageN

@@ -57,14 +57,9 @@ public class Lutis {
     }
 
     // native method interface
-    private native int powerN(int a, int b);
-
     private native byte[] rotateImageN(double angle, byte[] data);
 
-    public int power(int a, int b) {
-        return powerN(a, b);
-    }
-
+    // public method
     public void rotateImage(double angle, InputStream input, OutputStream out) throws IOException {
         byte[] inputData = IOUtil.readAllBytes(input);
 

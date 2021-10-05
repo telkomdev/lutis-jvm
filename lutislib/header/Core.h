@@ -20,9 +20,11 @@ namespace lutis
         static int DecodeFromBufferToMagickImage(JNIEnv *env, const jbyteArray& data, Magick::Image& dest)
         {
 
-            lutis::type::Byte* copy_data;
-            jbyte* array_element = env->GetByteArrayElements(data, copy_data);
+            lutis::type::Byte is_copy;
+            jbyte* array_element = env->GetByteArrayElements(data, &is_copy);
             jsize length_data = env->GetArrayLength(data);
+
+            printf("is copy %d\n", is_copy);
 
             lutis::type::Byte* data_source = (lutis::type::Byte*) array_element;
 
