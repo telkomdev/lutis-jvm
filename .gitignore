@@ -1,6 +1,10 @@
 lutislib/build/
 
 .idea/
+.settings/
+.vscode/
+.classpath
+.project
 
 target/
 
