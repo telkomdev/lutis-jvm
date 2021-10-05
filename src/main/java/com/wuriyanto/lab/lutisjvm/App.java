@@ -1,5 +1,10 @@
 package com.wuriyanto.lab.lutisjvm;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 /**
  * Hello world!
  *
@@ -14,15 +19,32 @@ public class App
             System.exit(1);
         }
 
+        FileOutputStream fos = null;
+        FileInputStream fis = null;
+
         Lutis lutis = new Lutis();
 
         System.out.println( "Hello World!" );
         try {
-            int p = lutis.power(2, 8);
-            System.out.println(p);
+            File file = new File("/Users/wuriyanto/Documents/java-work/lutis-jvm/testdata/pp.jpg");
+            fos = new FileOutputStream("/Users/wuriyanto/Documents/java-work/lutis-jvm/testdata/out.png");
+            fis = new FileInputStream(file);
+
+            lutis.rotateImage(90, fis, fos);
+
         } catch (Exception e) {
             System.out.println("err...");
             e.printStackTrace();
+        } finally {
+            try {
+                if (fos != null)
+                    fos.close();
+
+                if (fis != null)
+                    fis.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }

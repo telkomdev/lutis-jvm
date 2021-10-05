@@ -1,5 +1,8 @@
 package com.wuriyanto.lab.lutisjvm;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.FileSystems;
 
 public class Lutis {
@@ -56,8 +59,17 @@ public class Lutis {
     // native method interface
     private native int powerN(int a, int b);
 
+    private native byte[] rotateImageN(double angle, byte[] data);
+
     public int power(int a, int b) {
         return powerN(a, b);
+    }
+
+    public void rotateImage(double angle, InputStream input, OutputStream out) throws IOException {
+        byte[] inputData = IOUtil.readAllBytes(input);
+
+        byte[] outputData = rotateImageN(angle, inputData);
+        out.write(outputData);
     }
 
 }
