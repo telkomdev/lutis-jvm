@@ -12,7 +12,7 @@ gen-lib:
 	javac -h ./lutislib/header $(NATIVE_ACCESSER_PATH)
 
 build-lib:
-	cd ${LUTIS_LIB_FOLDER} && rm -rf build \
+	cd $(LUTIS_LIB_FOLDER) && rm -rf build \
 	&& mkdir build \
 	&& cd build \
 	&& cmake .. \
