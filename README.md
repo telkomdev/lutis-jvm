@@ -1,6 +1,6 @@
 # Lutis JVM
 
-An Experimental C/C++ Graphics Lib binding with `Java Virtual Machine`
+An Experimental C/C++ Graphics Lib binding for `Java Virtual Machine`
 
 ### Requirements
 - Java 8
