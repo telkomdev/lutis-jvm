@@ -55,7 +55,7 @@ JNIEXPORT jbyteArray JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_rotateImageN
     image.write(&blobOut);
 
     lutis::type::Byte datas[blobOut.length()];
-    memcpy(datas, blobOut.data(), blobOut.length());
+    MEMCPY(datas, blobOut.data(), blobOut.length());
 
     jbyte* result_e = new jbyte[blobOut.length()];
     jbyteArray result = env->NewByteArray(blobOut.length());
@@ -64,5 +64,7 @@ JNIEXPORT jbyteArray JNICALL Java_com_wuriyanto_lab_lutisjvm_Lutis_rotateImageN
         result_e[i] = (jbyte) datas[i];
     }
     env->SetByteArrayRegion(result, 0, blobOut.length(), result_e);
+
+    CLEAN_UP((lutis::type::Byte*)result_e);
     return result;
 }

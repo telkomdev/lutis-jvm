@@ -17,6 +17,8 @@ namespace lutis
                             delete[] imBytes; \
                             }
 
+#define MEMCPY(dest, src, count) memcpy(dest, src, count)
+
         static int DecodeFromBufferToMagickImage(JNIEnv *env, const jbyteArray& data, Magick::Image& dest)
         {
 
