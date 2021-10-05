@@ -15,3 +15,7 @@ lutislib/vendor/image_magick/
 
 *.iml
 
+
+*.jpg
+*.png
+*.class
