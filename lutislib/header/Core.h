@@ -17,27 +17,25 @@ namespace lutis
                             delete[] imBytes; \
                             }
 
-        static int DecodeFromBufferToMagickImage(const jbyteArray& data, Magick::Image& dest)
+        static int DecodeFromBufferToMagickImage(JNIEnv *env, const jbyteArray& data, Magick::Image& dest)
         {
-            // const lutis::type::Byte* arrs = reinterpret_cast<lutis::type::Byte*>(data.Data());
 
-            // size_t length = data.Length();
+            lutis::type::Byte* copy_data;
+            jbyte* array_element = env->GetByteArrayElements(data, copy_data);
+            jsize length_data = env->GetArrayLength(data);
 
-            // lutis::type::Byte* datas = new lutis::type::Byte[length];
-            // memcpy(datas, arrs, length);
+            lutis::type::Byte* data_source = (lutis::type::Byte*) array_element;
 
-            // // decode from buffer to Magick Image
-            // Magick::Blob blobIn(datas, length);
-            // try 
-            // {
-            //     dest.read(blobIn);
-            // } catch(Magick::Error& err)
-            // {
-            //     CLEAN_UP(datas);
-            //     return -1;
-            // }
+            // decode from buffer to Magick Image
+            Magick::Blob blobIn(data_source, length_data);
+            try 
+            {
+                dest.read(blobIn);
+            } catch(Magick::Error& err)
+            {
+                return -1;
+            }
 
-            // CLEAN_UP(datas);
             return 0;
         }
     }
