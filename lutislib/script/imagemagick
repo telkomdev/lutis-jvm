@@ -37,7 +37,7 @@ cd ImageMagick*
     --without-lcms2 \
     --without-lqr \
     --without-lzma \
-    --without-magick-plus-plus \
+    --with-magick-plus-plus \
     --without-openexr \
     --without-pango \
     --without-perl \

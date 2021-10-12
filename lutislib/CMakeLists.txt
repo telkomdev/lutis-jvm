@@ -34,7 +34,7 @@ set(ImageMagick_LIBRARIES ${PROJECT_SOURCE_DIR}/vendor/image_magick/lib)
 add_definitions( -DMAGICKCORE_QUANTUM_DEPTH=16 )
 add_definitions( -DMAGICKCORE_HDRI_ENABLE=0 )
 
-find_package(ImageMagick REQUIRED COMPONENTS convert Magick++ MagickCore)
+find_package(ImageMagick REQUIRED COMPONENTS convert Magick++ MagickCore MagickWand)
 # -------------------- Image Magick --------------------
 
 include_directories(${ImageMagick_INCLUDE_DIRS} ${JNI_INCLUDE_DIRS})
@@ -49,9 +49,14 @@ MESSAGE( [Main] " PROJECT_NAME = ${PROJECT_NAME}")
 MESSAGE( [Main] " CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
 MESSAGE( [Main] " CMAKE_SOURCE_DIR = ${CMAKE_SOURCE_DIR}")
 MESSAGE( [Main] " PROJECT_SOURCE_DIR = ${PROJECT_SOURCE_DIR}")
+
 MESSAGE( [Main] " ImageMagick_FOUND = ${ImageMagick_FOUND}")
+MESSAGE( [Main] " ImageMagick_MagickCore_FOUND = ${ImageMagick_MagickCore_FOUND}")
+MESSAGE( [Main] " ImageMagick_MagickWand_FOUND = ${ImageMagick_MagickWand_FOUND}")
+
 MESSAGE( [Main] " ImageMagick_INCLUDE_DIRS = ${ImageMagick_INCLUDE_DIRS}")
 MESSAGE( [Main] " ImageMagick_LIBRARIES = ${ImageMagick_LIBRARIES}")
+
 MESSAGE( [Main] " JNI_FOUND = ${JNI_FOUND}")
 MESSAGE( [Main] " JNI_INCLUDE_DIRS = ${JNI_INCLUDE_DIRS}")
 MESSAGE( [Main] " JNI_LIBRARIES = ${JNI_LIBRARIES}")
